@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Building Recognition</title>
+
+<title>Hệ thống nhận diện tòa nhà</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 <body>
+ <div class="header">
+    <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+    <h1>HỆ THỐNG NHẬN DIỆN TÒA NHÀ</h1>
+</div>   
 
-<h1>Nhận diện Building</h1>
+<div class="container">
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="image">
-    <br><br>
-    <button type="submit">Upload</button>
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<h1>Hệ thống nhận diện tòa nhà</h1>
+
+<p>Chụp ảnh hoặc tải ảnh lên để nhận diện</p>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" accept="image/*" capture="camera">
+
+<button type="submit">Nhận diện</button>
+
 </form>
+
+{% if filename %}
+
+<h3>Ảnh vừa chụp</h3>
+
+<img src="/uploads/{{ filename }}">
+
+{% endif %}
+
+</div>
 
 </body>
 </html>
